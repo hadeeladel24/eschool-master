@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-//import 'student_home.dart';
-import 'studant/student_home.dart';
 import 'role_selection_screen.dart';
 
 class Wrapper extends StatefulWidget {
