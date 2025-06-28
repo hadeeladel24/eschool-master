@@ -15,6 +15,7 @@ class _AddStudentState extends State<AddStudent> {
 
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _birthdateController = TextEditingController();
   final TextEditingController _enrollmentDateController = TextEditingController();
   final TextEditingController _phoneNumberController = TextEditingController();
@@ -53,6 +54,7 @@ class _AddStudentState extends State<AddStudent> {
           'student_id': newId,
           'first_name': _firstNameController.text,
           'last_name': _lastNameController.text,
+          'email':_emailController.text,
           'BOD': _birthdateController.text,
           'enrollment_date': _enrollmentDateController.text,
           'gender': chooseGender,
@@ -71,6 +73,7 @@ class _AddStudentState extends State<AddStudent> {
           chooseClassId = null;
           _firstNameController.clear();
           _lastNameController.clear();
+          _emailController.clear();
           _birthdateController.clear();
           _enrollmentDateController.clear();
           _phoneNumberController.clear();
@@ -93,15 +96,8 @@ class _AddStudentState extends State<AddStudent> {
       ),
       body: Container(
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xFFB3E5FC), // Light blue
-              Color(0xFF81D4FA), // Sky blue
-              Color(0xFF4FC3F7), // Blue
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
+
+            color:Colors.white,
         ),
         child: Padding(
           padding: const EdgeInsets.all(14.0),
@@ -111,43 +107,45 @@ class _AddStudentState extends State<AddStudent> {
               child: Column(
                 children: [
                   _buildTextField(_firstNameController, 'First Name'),
-                  const SizedBox(height: 16),
+                   SizedBox(height: 16),
                   _buildTextField(_lastNameController, 'Last Name'),
-                  const SizedBox(height: 16),
+                   SizedBox(height: 16),
+                  _buildTextField(_emailController, 'Email'),
+                   SizedBox(height: 16),
                   _buildTextField(_birthdateController, 'Birth Date'),
-                  const SizedBox(height: 16),
+                   SizedBox(height: 16),
                   _buildTextField(_enrollmentDateController, 'Enrollment Date'),
-                  const SizedBox(height: 16),
+                   SizedBox(height: 16),
                   _buildDropdownField(
                     label: 'Gender',
                     value: chooseGender,
                     items: ['Male', 'Female'],
                     onChanged: (value) => setState(() => chooseGender = value),
                   ),
-                  const SizedBox(height: 16),
+                   SizedBox(height: 16),
                   _buildTextField(_phoneNumberController, 'Phone Number'),
-                  const SizedBox(height: 16),
+                   SizedBox(height: 16),
                   _buildTextField(_statusController, 'Status'),
-                  const SizedBox(height: 16),
+                   SizedBox(height: 16),
                   _buildDropdownField(
                     label: 'Class ID',
                     value: chooseClassId,
                     items: classIds,
                     onChanged: (value) => setState(() => chooseClassId = value),
                   ),
-                  const SizedBox(height: 24),
+                   SizedBox(height: 24),
                   ElevatedButton(
                     onPressed: _addStudent,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue.shade800,
-                      padding: const EdgeInsets.symmetric(
+                      backgroundColor: Colors.blueAccent,
+                      padding:  EdgeInsets.symmetric(
                         vertical: 16,
                         horizontal: 40,
                       ),
                     ),
-                    child: const Text(
+                    child:  Text(
                       'Add Student',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                      style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold, fontSize: 16),
                     ),
                   ),
                 ],
@@ -165,7 +163,7 @@ class _AddStudentState extends State<AddStudent> {
       decoration: InputDecoration(
         labelText: label,
         filled: true,
-        fillColor: Colors.white.withOpacity(0.95),
+        fillColor: Colors.white,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
       ),
       validator: (value) => value == null || value.isEmpty ? 'Enter $label' : null,
@@ -182,8 +180,7 @@ class _AddStudentState extends State<AddStudent> {
       value: value,
       decoration: InputDecoration(
         labelText: label,
-        filled: true,
-        fillColor: Colors.white.withOpacity(0.95),
+        fillColor: Colors.white,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
       ),
       items: items

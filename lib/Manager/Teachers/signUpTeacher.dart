@@ -41,7 +41,9 @@ class _SignupState extends State<Signup> {
         } else if (data is List) {
           for (int i = 0; i < data.length; i++) {
             final value = data[i];
-            if (value != null && value['email']?.toString().toLowerCase() == email.text.trim().toLowerCase()) {
+            if (value != null &&
+                value['email']?.toString().toLowerCase() ==
+                    email.text.trim().toLowerCase()) {
               existingTeacherId = i.toString();
               break;
             }
@@ -51,16 +53,17 @@ class _SignupState extends State<Signup> {
 
       if (existingTeacherId == null) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('this email dose not exist please contact with manager')),
+          const SnackBar(content: Text('This email is not registered in the teacher database. Please contact the administrator.')),
         );
         return;
       }
 
-      final methods = await FirebaseAuth.instance.fetchSignInMethodsForEmail(email.text.trim());
+      final methods = await FirebaseAuth.instance
+          .fetchSignInMethodsForEmail(email.text.trim());
 
       if (methods.isNotEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('this email already registered')),
+          const SnackBar(content: Text('Email is already registered.')),
         );
         return;
       }
@@ -73,34 +76,119 @@ class _SignupState extends State<Signup> {
       Get.offAll(() => TeacherHomePage(teacherId: existingTeacherId!));
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: ${e.toString()}')),
+        SnackBar(content: Text('An error occurred: ${e.toString()}')),
       );
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Sign Up")),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: email,
-              decoration: InputDecoration(hintText: 'Enter email'),
+      appBar: AppBar(
+        title: const Text("Teacher Signup"),
+        backgroundColor: const Color(0xFF0D47A1),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Get.back(),
+        ),
+      ),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFF2196F3), Color(0xFF0D47A1)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: Center(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 40),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              elevation: 8,
+              color: Colors.white,
+              child: Padding(
+                padding: const EdgeInsets.all(24.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      "Create a New Account",
+                      style: TextStyle(
+                        color: Colors.blue[900],
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 30),
+                    TextField(
+                      controller: email,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        hintText: 'Email Address',
+                        prefixIcon: const Icon(Icons.email, color: Colors.blue),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: Colors.blue.shade700, width: 2),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: Colors.blue.shade300, width: 1.5),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 15, horizontal: 20),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    TextField(
+                      controller: password,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        hintText: 'Password',
+                        prefixIcon: const Icon(Icons.lock, color: Colors.blue),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: Colors.blue.shade700, width: 2),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: Colors.blue.shade300, width: 1.5),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 15, horizontal: 20),
+                      ),
+                    ),
+                    const SizedBox(height: 30),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: signup,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue[800],
+                          padding: const EdgeInsets.symmetric(vertical: 15),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          elevation: 5,
+                        ),
+                        child: const Text(
+                          "Sign Up",
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
-            TextField(
-              controller: password,
-              obscureText: true,
-              decoration: InputDecoration(hintText: 'Enter password'),
-            ),
-            ElevatedButton(
-              onPressed: signup,
-              child: Text("Sign Up"),
-            ),
-          ],
+          ),
         ),
       ),
     );

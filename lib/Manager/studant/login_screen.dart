@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-
+import 'package:school_managment_system/Manager/role_selection_screen.dart';
 import 'signup_screen.dart';
 import 'forgot_password_screen.dart';
 import 'student_home.dart';
-import '../role_selection_screen.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -28,7 +27,7 @@ class _LoginState extends State<Login> {
       final userEmail = credential.user?.email ?? '';
 
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('تم تسجيل الدخول بنجاح')),
+        const SnackBar(content: Text('You have successfully logged in.')),
       );
 
       if (userEmail.endsWith('@student.aaup.edu')) {
@@ -36,7 +35,7 @@ class _LoginState extends State<Login> {
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('خطأ في تسجيل الدخول: ${e.toString()}')),
+        SnackBar(content: Text('Login error: ${e.toString()}')),
       );
     }
   }
@@ -45,7 +44,7 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("تسجيل الدخول"),
+        title: const Text("login"),
         backgroundColor: const Color(0xFF0D47A1),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
@@ -81,7 +80,7 @@ class _LoginState extends State<Login> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      "تسجيل الدخول",
+                      "Login",
                       style: TextStyle(
                         color: Colors.blue[900],
                         fontSize: 28,
@@ -93,7 +92,7 @@ class _LoginState extends State<Login> {
                       controller: email,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        hintText: 'البريد الإلكتروني',
+                        hintText: 'Email',
                         prefixIcon: const Icon(Icons.email, color: Colors.blue),
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -114,7 +113,7 @@ class _LoginState extends State<Login> {
                       controller: password,
                       obscureText: true,
                       decoration: InputDecoration(
-                        hintText: 'كلمة المرور',
+                        hintText: 'Password',
                         prefixIcon: const Icon(Icons.lock, color: Colors.blue),
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -144,7 +143,7 @@ class _LoginState extends State<Login> {
                           elevation: 5,
                         ),
                         child: const Text(
-                          "دخول",
+                          "entrance",
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
@@ -164,7 +163,7 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         child: Text(
-                          "تسجيل حساب جديد",
+                          "Register a new account",
                           style: TextStyle(
                             fontSize: 16,
                             color: Colors.blue.shade700,
@@ -177,7 +176,7 @@ class _LoginState extends State<Login> {
                     TextButton(
                       onPressed: () => Get.to(() => Forgot()),
                       child: Text(
-                        "هل نسيت كلمة المرور؟",
+                        "Forgot your password?",
                         style: TextStyle(
                           color: Colors.blue.shade900,
                           decoration: TextDecoration.underline,

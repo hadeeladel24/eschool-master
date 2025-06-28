@@ -4,7 +4,7 @@ import 'attendance_page.dart';
 import 'contact_us_page.dart';
 import 'Home_Grade_Veiw.dart';
 import 'package:firebase_database/firebase_database.dart';
-//import 'package:firebase_core/firebase_core.dart';
+
 class TeacherHomePage extends StatelessWidget {
   final String teacherId;
 

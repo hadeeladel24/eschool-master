@@ -83,8 +83,8 @@ class _EditStudentScreenState extends State<EditStudent> {
         labelText: label,
         prefixIcon: Icon(icon, color: Colors.blueAccent),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-        filled: true,
-        fillColor: Colors.white.withOpacity(0.95),
+
+        fillColor: Colors.white,
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {
@@ -100,20 +100,14 @@ class _EditStudentScreenState extends State<EditStudent> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Update Student Information'),
-        backgroundColor: Colors.blue.shade700,
+        backgroundColor: Colors.blue.shade800,
         elevation: 0,
       ),
       body: Container(
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xFFB3E5FC), // Light Blue
-              Color(0xFF81D4FA), // Sky Blue
-              Color(0xFF4FC3F7), // Medium Blue
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
+
+            color:Colors.white,
+
         ),
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -133,7 +127,7 @@ class _EditStudentScreenState extends State<EditStudent> {
                 ),
                 child: const Text(
                   'Load Student Information',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: TextStyle(color:Colors.white,fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ),
               const SizedBox(height: 16),
@@ -148,58 +142,58 @@ class _EditStudentScreenState extends State<EditStudent> {
                           label: 'First Name',
                           icon: Icons.person,
                         ),
-                        const SizedBox(height: 16),
+                         SizedBox(height: 16),
                         _buildTextField(
                           controller: _lastNameController,
                           label: 'Last Name',
                           icon: Icons.person,
                         ),
-                        const SizedBox(height: 16),
+                         SizedBox(height: 16),
                         _buildTextField(
                           controller: _phoneController,
                           label: 'Phone Number',
                           icon: Icons.phone,
                         ),
-                        const SizedBox(height: 16),
+                         SizedBox(height: 16),
                         _buildTextField(
                           controller: _genderController,
                           label: 'Gender',
                           icon: Icons.wc,
                         ),
-                        const SizedBox(height: 16),
+                         SizedBox(height: 16),
                         _buildTextField(
                           controller: _birthDateController,
                           label: 'Birth Date',
                           icon: Icons.calendar_today,
                         ),
-                        const SizedBox(height: 16),
+                         SizedBox(height: 16),
                         _buildTextField(
                           controller: _classIdController,
                           label: 'Class ID',
                           icon: Icons.class_,
                         ),
-                        const SizedBox(height: 16),
+                         SizedBox(height: 16),
                         _buildTextField(
                           controller: _statusController,
                           label: 'Status',
                           icon: Icons.info,
                         ),
-                        const SizedBox(height: 16),
+                         SizedBox(height: 16),
                         _buildTextField(
                           controller: _enrollmentDateController,
                           label: 'Enrollment Date',
                           icon: Icons.date_range,
                         ),
-                        const SizedBox(height: 20),
+                         SizedBox(height: 20),
                         ElevatedButton(
                           onPressed: _updateStudentData,
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.blue.shade800,
-                            padding: const EdgeInsets.symmetric(vertical: 16),
+                            padding:  EdgeInsets.symmetric(vertical: 16),
                           ),
-                          child: const Text(
+                          child:  Text(
                             'Update',
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                            style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16),
                           ),
                         ),
                       ],

@@ -7,23 +7,23 @@ class LessonsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> lessons = [
-      {'subject': 'الرياضيات', 'title': 'الدوال التربيعية', 'color': Colors.red},
-      {'subject': 'اللغة العربية', 'title': 'بلاغة التشبيه', 'color': Colors.green},
-      {'subject': 'العلوم', 'title': 'دورة الماء في الطبيعة', 'color': Colors.blue},
-      {'subject': 'الإنجليزي', 'title': 'Present Perfect Tense', 'color': Colors.orange},
-      {'subject': 'التاريخ', 'title': 'الحضارات القديمة', 'color': Colors.brown},
-      {'subject': 'التكنولوجيا', 'title': 'أنظمة التشغيل', 'color': Colors.teal},
-      {'subject': 'الفيزياء', 'title': 'قانون نيوتن الثاني', 'color': Colors.purple},
-      {'subject': 'الكيمياء', 'title': 'الروابط الكيميائية', 'color': Colors.deepOrange},
-      {'subject': 'الأحياء', 'title': 'الخلايا النباتية', 'color': Colors.indigo},
-      {'subject': 'الدين', 'title': 'سورة الكهف', 'color': Colors.deepPurple},
-      {'subject': 'الرياضة', 'title': 'قواعد كرة السلة', 'color': Colors.lightGreen},
-      {'subject': 'الفن', 'title': 'المنظور في الرسم', 'color': Colors.pink},
+      {'subject': 'Mathematics', 'title': 'Quadratic Functions', 'color': Colors.red},
+      {'subject': 'Arabic Language', 'title': 'Simile in Rhetoric', 'color': Colors.green},
+      {'subject': 'Science', 'title': 'The Water Cycle in Nature', 'color': Colors.blue},
+      {'subject': 'English', 'title': 'Present Perfect Tense', 'color': Colors.orange},
+      {'subject': 'History', 'title': 'Ancient Civilizations', 'color': Colors.brown},
+      {'subject': 'Technology', 'title': 'Operating Systems', 'color': Colors.teal},
+      {'subject': 'Physics', 'title': 'Newton’s Second Law', 'color': Colors.purple},
+      {'subject': 'Chemistry', 'title': 'Chemical Bonds', 'color': Colors.deepOrange},
+      {'subject': 'Biology', 'title': 'Plant Cells', 'color': Colors.indigo},
+      {'subject': 'Religion', 'title': 'Surah Al-Kahf', 'color': Colors.deepPurple},
+      {'subject': 'Physical Education', 'title': 'Basketball Rules', 'color': Colors.lightGreen},
+      {'subject': 'Art', 'title': 'Perspective in Drawing', 'color': Colors.pink},
     ];
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('الدروس'),
+        title: Text('lessons'),
         backgroundColor: Colors.blue[800],
         centerTitle: true,
       ),
@@ -50,7 +50,7 @@ class LessonsScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 subtitle: Text(
-                  'المادة: ${lesson['subject'] as String}',
+                  'subject: ${lesson['subject'] as String}',
                   style: TextStyle(fontSize: 15),
                 ),
                 onTap: () {

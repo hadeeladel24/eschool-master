@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
-
 import 'login_screen.dart';
 import 'grades_screen.dart';
 import 'schedule_screen.dart';
 import 'lessons_screen.dart';
-import 'attendance_screen.dart';     
+import 'attendance_screen.dart';
 
 class StudentHomeScreen extends StatefulWidget {
   final String studentEmail;
@@ -40,7 +39,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
           if (emailInDb == widget.studentEmail.trim()) {
             setState(() {
               studentName = "${value['first_name'] ?? ''} ${value['last_name'] ?? ''}".trim();
-              studentClass = value['class_id'] ?? 'غير معروف';
+              studentClass = value['class_id'] ?? 'unknown';
               studentId = (value['student_id'] is int)
                   ? value['student_id']
                   : int.tryParse(value['student_id'].toString());
@@ -55,7 +54,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
           if (emailInDb == widget.studentEmail.trim()) {
             setState(() {
               studentName = "${value['first_name'] ?? ''} ${value['last_name'] ?? ''}".trim();
-              studentClass = value['class_id'] ?? 'غير معروف';
+              studentClass = value['class_id'] ?? 'unknown';
               studentId = (value['student_id'] is int)
                   ? value['student_id']
                   : int.tryParse(value['student_id'].toString());
@@ -65,14 +64,14 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
         }
       }
       setState(() {
-        studentName = 'بيانات غير صحيحة';
-        studentClass = 'غير معروف';
+        studentName = 'Incorrect data';
+        studentClass = 'unknown';
         studentId = null;
       });
     } else {
       setState(() {
-        studentName = 'لا توجد بيانات';
-        studentClass = 'غير معروف';
+        studentName = 'No data found';
+        studentClass = 'unknown';
         studentId = null;
       });
     }
@@ -82,7 +81,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('مرحبا بك 👋'),
+        title: const Text('Welcome '),
         backgroundColor: Colors.blue[800],
         centerTitle: true,
         actions: [
@@ -91,7 +90,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
             onPressed: () {
               Navigator.of(context).pushAndRemoveUntil(
                 MaterialPageRoute(builder: (_) => Login()),
-                (route) => false,
+                    (route) => false,
               );
             },
           ),
@@ -105,24 +104,20 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
             studentName == null
                 ? const Center(child: CircularProgressIndicator())
                 : Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'مرحبًا، $studentName',
-                        style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        'الصف: ${studentClass ?? 'غير معروف'}',
-                        style: const TextStyle(fontSize: 16, color: Colors.grey),
-                      ),
-                    ],
-                  ),
-            const SizedBox(height: 20),
-            const Text(
-              'القائمة الرئيسية',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Welcome، $studentName',
+                  style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  'class: ${studentClass ?? 'unknown'}',
+                  style: const TextStyle(fontSize: 16, color: Colors.grey),
+                ),
+              ],
             ),
+
             const SizedBox(height: 10),
             Expanded(
               child: GridView.count(
@@ -130,10 +125,11 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                 mainAxisSpacing: 15,
                 crossAxisSpacing: 15,
                 children: [
-                  _buildCard(context, Icons.book, 'الدروس'),
-                  _buildCard(context, Icons.grade, 'العلامات'),
-                  _buildCard(context, Icons.schedule, 'الجدول'),
-                  _buildCard(context, Icons.check_circle, 'الحضور والغياب'),
+                  _buildCard(context, Icons.book, 'Lessons'),
+                  _buildCard(context, Icons.grade, 'Grades'),
+                  _buildCard(context, Icons.schedule, 'Schedule'),
+                  _buildCard(context, Icons.check_circle, 'Attendance'),
+
                 ],
               ),
             ),
@@ -151,7 +147,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
       child: InkWell(
         borderRadius: BorderRadius.circular(15),
         onTap: () {
-          if (label == 'العلامات') {
+          if (label == 'Grades') {
             if (studentClass != null && studentId != null) {
               Navigator.push(
                 context,
@@ -164,14 +160,14 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
               );
             } else {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('بيانات الطالب غير مكتملة')),
+                const SnackBar(content: Text('student data not complete')),
               );
             }
-          } else if (label == 'الجدول') {
+          } else if (label == 'Schedule') {
             Navigator.push(context, MaterialPageRoute(builder: (_) => ScheduleScreen()));
-          } else if (label == 'الدروس') {
+          } else if (label == 'Lessons') {
             Navigator.push(context, MaterialPageRoute(builder: (_) => LessonsScreen()));
-          } else if (label == 'الحضور والغياب') {
+          } else if (label == 'Attendance') {
             if (studentClass != null && studentId != null) {
               Navigator.push(
                 context,
@@ -184,7 +180,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
               );
             } else {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('بيانات الطالب غير مكتملة')),
+                const SnackBar(content: Text('student data not complete')),
               );
             }
           }

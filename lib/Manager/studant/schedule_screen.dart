@@ -2,27 +2,29 @@ import 'package:flutter/material.dart';
 
 class ScheduleScreen extends StatelessWidget {
   final Map<String, List<String>> weeklySchedule = {
-    'الأحد': ['عربي', 'علوم', 'رياضيات', 'إنجليزي', 'تاريخ', 'تكنولوجيا'],
-    'الاثنين': ['فيزياء', 'كيمياء', 'أحياء', 'دين', 'رياضة', 'فن'],
-    'الثلاثاء': ['رياضيات', 'عربي', 'علوم', 'تكنولوجيا', 'إنجليزي', 'تاريخ'],
-    'الأربعاء': ['دين', 'فيزياء', 'كيمياء', 'أحياء', 'رياضة', 'فن'],
-    'الخميس': ['تكنولوجيا', 'رياضيات', 'عربي', 'إنجليزي', 'علوم', 'تاريخ'],
+    'Sunday': ['Arabic', 'Science', 'Mathematics', 'English', 'History', 'Technology'],
+    'Monday': ['Physics', 'Chemistry', 'Biology', 'Religion', 'Physical Education', 'Art'],
+    'Tuesday': ['Mathematics', 'Arabic', 'Science', 'Technology', 'English', 'History'],
+    'Wednesday': ['Religion', 'Physics', 'Chemistry', 'Biology', 'Physical Education', 'Art'],
+    'Thursday': ['Technology', 'Mathematics', 'Arabic', 'English', 'Science', 'History'],
   };
 
+
   final List<String> periods = [
-    'الحصة 1',
-    'الحصة 2',
-    'الحصة 3',
-    'الحصة 4',
-    'الحصة 5',
-    'الحصة 6',
+    'Period 1',
+    'Period 2',
+    'Period 3',
+    'Period 4',
+    'Period 5',
+    'Period 6',
   ];
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('الجدول الدراسي'),
+        title: Text('Academic schedule'),
         backgroundColor: Colors.blue[800],
       ),
       body: Padding(

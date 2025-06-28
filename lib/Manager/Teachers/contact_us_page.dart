@@ -31,7 +31,7 @@ class _ContactUsPageState extends State<ContactUsPage> {
       'timestamp': DateTime.now().toIso8601String(),
     });
 
-    print("Message sent!");
+    print("Message sent");
   }
 
 
@@ -39,76 +39,76 @@ class _ContactUsPageState extends State<ContactUsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Contact Us", style: TextStyle(color: Colors.white)),
+        title:  Text("Contact Us", style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.blueAccent,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
+        padding:  EdgeInsets.all(16),
         child: Column(
           children: [
-            // Card for email
+
             Card(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
               elevation: 4,
               child: ListTile(
-                leading: const Icon(Icons.email, color: Colors.blueAccent),
-                title: const Text(" SchoolManagmentSys@School.edu"),
+                leading:  Icon(Icons.email, color: Colors.blueAccent),
+                title:  Text(" SchoolManagmentSys@School.edu"),
               ),
             ),
-            const SizedBox(height: 10),
-            // Card for phone
+             SizedBox(height: 10),
+
             Card(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
               elevation: 4,
               child: ListTile(
-                leading: const Icon(Icons.phone, color: Colors.green),
-                title: const Text(" Phone number : +970 599 123 456"),
+                leading:  Icon(Icons.phone, color: Colors.green),
+                title:  Text(" Phone number : +970 599 123 456"),
               ),
             ),
-            const SizedBox(height: 20),
-            // Message Form
+             SizedBox(height: 20),
+
             Card(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
               elevation: 5,
               child: Padding(
-                padding: const EdgeInsets.all(16),
+                padding:  EdgeInsets.all(16),
                 child: Form(
                   key: _formKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                       Text(
                         "Send us a message",
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       ),
-                      const SizedBox(height: 12),
+                       SizedBox(height: 12),
                       TextFormField(
                         controller: messageController,
-                        decoration: const InputDecoration(
-                          labelText: "Your Message",
+                        decoration:  InputDecoration(
+                          labelText: "Write Your Message",
                           border: OutlineInputBorder(),
                         ),
                         maxLines: 4,
                         validator: (val) => val == null || val.isEmpty ? "Enter your message" : null,
                       ),
-                      const SizedBox(height: 20),
+                       SizedBox(height: 20),
                       Center(
                         child: ElevatedButton.icon(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
                               sendMessage(messageController.text.trim());
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text("Message sent successfully!")),
+                                 SnackBar(content: Text("Message sent successfully!")),
                               );
                               messageController.clear();
                             }
                           },
-                          icon: const Icon(Icons.send),
-                          label: const Text("Send Message"),
+                          icon:  Icon(Icons.send),
+                          label:  Text("Send Message"),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.blueAccent,
                             foregroundColor: Colors.white,
-                            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                            padding:  EdgeInsets.symmetric(horizontal: 24, vertical: 14),
                           ),
                         ),
                       ),

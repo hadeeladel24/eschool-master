@@ -53,7 +53,7 @@ class _DeleteTeacherPageState extends State<DeleteTeacher> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('حذف معلومات المعلم'),
+        title: const Text('delete teacher information'),
         centerTitle: true,
         backgroundColor: Colors.blue.shade800,
         elevation: 8,
@@ -71,7 +71,7 @@ class _DeleteTeacherPageState extends State<DeleteTeacher> {
             end: Alignment.bottomRight,
           ),
         ),
-        padding: const EdgeInsets.all(20),
+        padding:  EdgeInsets.all(20),
         child: Center(
           child: SingleChildScrollView(
             child: Card(
@@ -79,7 +79,7 @@ class _DeleteTeacherPageState extends State<DeleteTeacher> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(25),
               ),
-              color: Colors.white.withOpacity(0.95),
+              color: Colors.white,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 40),
                 child: Column(
@@ -88,15 +88,13 @@ class _DeleteTeacherPageState extends State<DeleteTeacher> {
                     TextField(
                       controller: _teacherIdController,
                       decoration: InputDecoration(
-                        labelText: 'أدخل رقم المعلم',
+                        labelText: 'please enter teacher id',
                         prefixIcon: const Icon(Icons.person_search, color: Colors.blue),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),
-                        filled: true,
-                        fillColor: Colors.blue.shade50,
+
                       ),
-                      keyboardType: TextInputType.number,
                     ),
                     const SizedBox(height: 30),
                     Container(
@@ -128,10 +126,10 @@ class _DeleteTeacherPageState extends State<DeleteTeacher> {
                             width: double.infinity,
                             child: ElevatedButton.icon(
                               onPressed: _deleteTeacher,
-                              icon: const Icon(Icons.delete_forever, size: 28),
+                              icon: const Icon(Icons.delete_forever, size: 28,color:Colors.white),
                               label: const Text(
-                                'حذف المعلم',
-                                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                                'delete teacher',
+                                style: TextStyle(color: Colors.white,fontSize: 20, fontWeight: FontWeight.bold),
                               ),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.blue.shade700,

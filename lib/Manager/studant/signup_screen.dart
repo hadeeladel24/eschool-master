@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:school_managment_system/Manager/warpper.dart';
 
-import '../warpper.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -31,7 +31,7 @@ class _SignupState extends State<Signup> {
       Get.offAll(() => Wrapper());
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('خطأ: ${e.toString()}')),
+        SnackBar(content: Text('error: ${e.toString()}')),
       );
     }
   }
@@ -40,7 +40,7 @@ class _SignupState extends State<Signup> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("إنشاء حساب"),
+        title: const Text("Create an account"),
         backgroundColor: const Color(0xFF0D47A1),
       ),
       body: Container(
@@ -69,7 +69,7 @@ class _SignupState extends State<Signup> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      "إنشاء حساب جديد",
+                      "Create a new account",
                       style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
@@ -81,7 +81,7 @@ class _SignupState extends State<Signup> {
                       controller: email,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        hintText: 'البريد الإلكتروني',
+                        hintText: 'Email',
                         prefixIcon: const Icon(Icons.email, color: Colors.blue),
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.blue.shade700, width: 2),
@@ -99,7 +99,7 @@ class _SignupState extends State<Signup> {
                       controller: password,
                       obscureText: true,
                       decoration: InputDecoration(
-                        hintText: 'كلمة المرور',
+                        hintText: 'password',
                         prefixIcon: const Icon(Icons.lock, color: Colors.blue),
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.blue.shade700, width: 2),
@@ -125,7 +125,7 @@ class _SignupState extends State<Signup> {
                           ),
                         ),
                         child: const Text(
-                          "تسجيل",
+                          "registration",
                           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                       ),

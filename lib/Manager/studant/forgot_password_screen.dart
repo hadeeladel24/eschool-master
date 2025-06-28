@@ -17,12 +17,12 @@ class _ForgotState extends State<Forgot> {
           .sendPasswordResetEmail(email: email.text.trim());
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text("تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني"),
+          content: Text("A password reset link has been sent to your email."),
         ),
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('خطأ: ${e.toString()}')),
+        SnackBar(content: Text('error: ${e.toString()}')),
       );
     }
   }
@@ -31,15 +31,15 @@ class _ForgotState extends State<Forgot> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("استعادة كلمة المرور"),
+        title: const Text("Recover your password"),
         backgroundColor: const Color(0xFF0D47A1),
       ),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color(0xFF2196F3), // أزرق فاتح
-              Color(0xFF0D47A1), // أزرق غامق
+              Color(0xFF2196F3),
+              Color(0xFF0D47A1),
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -60,7 +60,7 @@ class _ForgotState extends State<Forgot> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      "هل نسيت كلمة المرور؟",
+                      "Forgot your password؟",
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -72,16 +72,16 @@ class _ForgotState extends State<Forgot> {
                       controller: email,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        hintText: 'أدخل بريدك الإلكتروني',
+                        hintText: 'Enter your email',
                         prefixIcon: const Icon(Icons.email, color: Colors.blue),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: Colors.blue.shade700, width: 2),
+                          BorderSide(color: Colors.blue.shade700, width: 2),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: Colors.blue.shade300, width: 1.5),
+                          BorderSide(color: Colors.blue.shade300, width: 1.5),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         contentPadding: const EdgeInsets.symmetric(
@@ -101,7 +101,7 @@ class _ForgotState extends State<Forgot> {
                           ),
                         ),
                         child: const Text(
-                          "إرسال رابط إعادة التعيين",
+                          "Send reset link",
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),

@@ -152,10 +152,10 @@ class _InsertGradesPageState extends State<InsertGradesPage> {
                 fetchStudentsForClass(value!);
               },
             ),
-            const SizedBox(height: 10),
+           SizedBox(height: 10),
             Expanded(
               child: students.isEmpty
-                  ? const Center(child: Text("No students"))
+                  ?  Center(child: Text("No students"))
                   : SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: DataTable(

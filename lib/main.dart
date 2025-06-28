@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-//import 'package:firebase_database/firebase_database.dart';
+
 import 'firebase_options.dart';
 import 'Manager/warpper.dart';
 import  'package:get/get.dart';
-//import 'role_selection_screen.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,15 +20,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'مدرستي الالكترونية ',
+      title: 'eSchool ',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
       home: Wrapper(),
     );
   }
 }
-
-

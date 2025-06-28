@@ -11,10 +11,7 @@ class ManagerHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<_HomeItem> items = [
-    /* _HomeItem("Add Classes", Icons.class_, Colors.blueAccent[100]!, () {
-        Navigator.push(context, MaterialPageRoute(builder: (_) => AddClass()));
-      }),
-      */
+
       _HomeItem("Add Student", Icons.person, Colors.blueAccent[100]!, () {
         Navigator.push(context, MaterialPageRoute(builder: (_) => AddStudent()));
       }),

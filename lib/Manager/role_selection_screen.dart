@@ -23,7 +23,6 @@ class RoleSelectionScreen extends StatelessWidget {
         child: InkWell(
           onTap: onTap,
           borderRadius: BorderRadius.circular(16),
-          //splashColor: color.withOpacity(0.3),
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 24, horizontal: 16),
             child: Row(
@@ -70,7 +69,7 @@ class RoleSelectionScreen extends StatelessWidget {
             SizedBox(height: 20),
             Center(
               child: Text(
-            'اهلا بك في المدرسة الالكترونية ',
+            'Wellcome to eSchool ',
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
@@ -82,7 +81,7 @@ class RoleSelectionScreen extends StatelessWidget {
             buildRoleCard(
               context: context,
               icon: Icons.school,
-              title: 'تسجيل الدخول كطالب',
+              title: 'Register as Student',
               color: Colors.green,
               onTap: () {
                 Navigator.push(
@@ -94,7 +93,7 @@ class RoleSelectionScreen extends StatelessWidget {
             buildRoleCard(
               context: context,
               icon: Icons.person,
-              title: 'تسجيل الدخول كمعلم',
+              title: 'Register as Teacher',
               color: Colors.orange,
               onTap: () {
                 Navigator.push(
@@ -106,7 +105,7 @@ class RoleSelectionScreen extends StatelessWidget {
             buildRoleCard(
               context: context,
               icon: Icons.admin_panel_settings,
-              title: 'تسجيل الدخول كمدير',
+              title: 'Register as Manager',
               color: Colors.red,
               onTap: () {
                 Navigator.push(

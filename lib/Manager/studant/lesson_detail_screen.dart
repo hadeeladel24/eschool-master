@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import'package:flutter/material.dart';
 
 class LessonDetailScreen extends StatelessWidget {
   final String subject;
@@ -10,7 +10,7 @@ class LessonDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('تفاصيل الدرس'),
+        title: Text('Lesson details'),
         backgroundColor: Colors.blue[800],
       ),
       body: Padding(
@@ -24,12 +24,12 @@ class LessonDetailScreen extends StatelessWidget {
             ),
             SizedBox(height: 12),
             Text(
-              'المادة: $subject',
+              'subject: $subject',
               style: TextStyle(fontSize: 18, color: Colors.grey[700]),
             ),
             SizedBox(height: 20),
             Text(
-              'هذا هو شرح مفصل للدرس "$title" في مادة $subject. يمكنك تخصيص هذه الصفحة لعرض محتوى الدرس مثل فيديو أو ملخص أو ملف PDF.',
+              'This is a detailed explanation of the lesson. "$title" in subject $subject. You can customize this page to display lesson content such as a video, summary, or PDF file.',
               style: TextStyle(fontSize: 16),
             ),
           ],

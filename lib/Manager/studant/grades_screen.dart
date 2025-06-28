@@ -31,7 +31,7 @@ class _GradesScreenState extends State<GradesScreen> {
   Future<void> fetchGrades() async {
     try {
       final snapshot =
-          await database.child('grades').child(widget.classId.trim()).get();
+      await database.child('grades').child(widget.classId.trim()).get();
 
       if (!snapshot.exists) {
         setState(() {
@@ -49,7 +49,6 @@ class _GradesScreenState extends State<GradesScreen> {
           final subject = subjectEntry.key;
           final subjectValue = subjectEntry.value;
 
-          // الحالة الأولى: البيانات بصيغة Map
           if (subjectValue is Map) {
             final studentKey = widget.studentId.toString();
             final studentData = subjectValue[studentKey];
@@ -62,7 +61,6 @@ class _GradesScreenState extends State<GradesScreen> {
               loadedGrades[subject] = grade;
             }
 
-          // الحالة الثانية: البيانات بصيغة List
           } else if (subjectValue is List) {
             final index = widget.studentId;
             if (index >= 0 && index < subjectValue.length) {
@@ -83,8 +81,7 @@ class _GradesScreenState extends State<GradesScreen> {
         loading = false;
       });
     } catch (e) {
-      // من الأفضل طباعة الخطأ أثناء التطوير فقط
-      // print('❌ خطأ أثناء جلب العلامات: $e');
+      print(' error : $e');
       setState(() {
         loading = false;
         hasGrades = false;
@@ -101,32 +98,32 @@ class _GradesScreenState extends State<GradesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('العلامات')),
+      appBar: AppBar(title: const Text('Grades')),
       body: loading
           ? const Center(child: CircularProgressIndicator())
           : hasGrades
-              ? ListView.separated(
-                  padding: const EdgeInsets.all(16),
-                  itemCount: studentGrades.length,
-                  separatorBuilder: (_, __) => const Divider(),
-                  itemBuilder: (context, index) {
-                    final subject = studentGrades.keys.elementAt(index);
-                    final grade = studentGrades[subject]!;
-                    return ListTile(
-                      title: Text(
-                        subject,
-                        style: const TextStyle(fontSize: 18),
-                      ),
-                      trailing: Text(
-                        '$grade',
-                        style: const TextStyle(fontSize: 16),
-                      ),
-                    );
-                  },
-                )
-              : const Center(
-                  child: Text('❌ لا توجد علامات لهذا الطالب'),
-                ),
+          ? ListView.separated(
+        padding: const EdgeInsets.all(16),
+        itemCount: studentGrades.length,
+        separatorBuilder: (_, __) => const Divider(),
+        itemBuilder: (context, index) {
+          final subject = studentGrades.keys.elementAt(index);
+          final grade = studentGrades[subject]!;
+          return ListTile(
+            title: Text(
+              subject,
+              style: const TextStyle(fontSize: 18),
+            ),
+            trailing: Text(
+              '$grade',
+              style: const TextStyle(fontSize: 16),
+            ),
+          );
+        },
+      )
+          : const Center(
+        child: Text(' No Grade found for this student'),
+      ),
     );
   }
 }
